@@ -50,6 +50,11 @@ export interface AgentTARSBrowserOptions {
    * CDP endpoint to connect to, for example "http://127.0.0.1:9222/json/version
    */
   cdpEndpoint?: string;
+  /**
+   * WebSocket endpoint to connect to, for example "ws://127.0.0.1:9222/devtools/browser/{id}"
+   * If both wsEndpoint and cdpEndpoint are provided, wsEndpoint takes priority
+   */
+  wsEndpoint?: string;
 }
 
 /**

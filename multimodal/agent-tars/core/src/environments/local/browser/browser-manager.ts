@@ -24,7 +24,7 @@ export class BrowserManager {
   // FIXME: move to `@agent-infra/browser`.
   private isLaunched = false;
   private logger: ConsoleLogger;
-  public lastLaunchOptions: { headless?: boolean; cdpEndpoint?: string } = {};
+  public lastLaunchOptions: { headless?: boolean; cdpEndpoint?: string; wsEndpoint?: string } = {};
   private isRecoveryInProgress = false;
 
   private constructor(logger: ConsoleLogger) {
@@ -48,9 +48,10 @@ export class BrowserManager {
   public getBrowser(): LocalBrowser | RemoteBrowser {
     if (!this.browser) {
       this.logger.info('Creating browser instance (not launched yet)');
-      if (this.lastLaunchOptions?.cdpEndpoint) {
+      if (this.lastLaunchOptions?.wsEndpoint || this.lastLaunchOptions?.cdpEndpoint) {
         this.browser = new RemoteBrowser({
           logger: this.logger.spawn('RemoteBrowser'),
+          wsEndpoint: this.lastLaunchOptions.wsEndpoint,
           cdpEndpoint: this.lastLaunchOptions.cdpEndpoint,
         });
       } else {
@@ -66,7 +67,7 @@ export class BrowserManager {
    * Launch the browser with specified options
    */
   public async launchBrowser(
-    options: { headless?: boolean; cdpEndpoint?: string } = {},
+    options: { headless?: boolean; cdpEndpoint?: string; wsEndpoint?: string } = {},
   ): Promise<void> {
     if (this.isLaunched) {
       this.logger.info('Browser already launched, skipping launch');
@@ -155,9 +156,10 @@ export class BrowserManager {
       }
 
       // Create new browser instance
-      if (this.lastLaunchOptions?.cdpEndpoint) {
+      if (this.lastLaunchOptions?.wsEndpoint || this.lastLaunchOptions?.cdpEndpoint) {
         this.browser = new RemoteBrowser({
           logger: this.logger.spawn('RemoteBrowser'),
+          wsEndpoint: this.lastLaunchOptions.wsEndpoint,
           cdpEndpoint: this.lastLaunchOptions.cdpEndpoint,
         });
       } else {

@@ -77,6 +77,10 @@ export class AgentTARSCLI extends AgentCLI {
           '--browser.cdpEndpoint <endpoint>',
           'CDP endpoint to connect to, for example "http://127.0.0.1:9222/json/version',
         )
+        .option(
+          '--browser.wsEndpoint <endpoint>',
+          'WebSocket endpoint to connect to, for example "ws://127.0.0.1:9222/devtools/browser/{id}"',
+        )
         // Planner configuration
         .option('--planner <planner>', 'Planner config')
         .option('--planner.enable', 'Enable planning functionality for complex tasks')

@@ -54,6 +54,7 @@ export class AgentTARSLocalEnvironment extends AgentTARSBaseEnvironment {
     this.browserManager.lastLaunchOptions = {
       headless: this.options.browser?.headless,
       cdpEndpoint: this.options.browser?.cdpEndpoint,
+      wsEndpoint: this.options.browser?.wsEndpoint,
     };
 
     this.workspacePathResolver = new WorkspacePathResolver({ workspace });
@@ -415,6 +416,7 @@ export class AgentTARSLocalEnvironment extends AgentTARSBaseEnvironment {
         await this.browserManager.launchBrowser({
           headless: this.options.browser?.headless,
           cdpEndpoint: this.options.browser?.cdpEndpoint,
+          wsEndpoint: this.options.browser?.wsEndpoint,
         });
       }
     } else {
