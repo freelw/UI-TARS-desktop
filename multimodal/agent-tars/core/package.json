@@ -1,6 +1,6 @@
 {
-  "name": "@agent-tars/core",
-  "version": "0.3.0",
+  "name": "@freelw/agent-tars-core",
+  "version": "0.3.21",
   "description": "Agent TARS core.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,10 +22,10 @@
     "benchmark:crawl": "cd benchmark/crawl && pnpm start"
   },
   "dependencies": {
-    "@tarko/shared-utils": "workspace:*",
-    "@tarko/shared-media-utils": "workspace:*",
-    "@tarko/mcp-agent": "workspace:*",
-    "@agent-tars/interface": "workspace:*"
+    "@tarko/shared-utils": "0.3.0",
+    "@tarko/shared-media-utils": "0.3.0",
+    "@tarko/mcp-agent": "0.3.0",
+    "@agent-tars/interface": "0.3.0"
   },
   "devDependencies": {
     "@gui-agent/operator-browser": "workspace:*",

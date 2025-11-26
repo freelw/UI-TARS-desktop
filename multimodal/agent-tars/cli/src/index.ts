@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { AgentTARS } from '@agent-tars/core';
+import { AgentTARS } from '@freelw/agent-tars-core';
 import path, { join } from 'path';
 import {
   AgentCLI,

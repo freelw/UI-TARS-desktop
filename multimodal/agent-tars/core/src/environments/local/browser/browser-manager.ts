@@ -47,7 +47,7 @@ export class BrowserManager {
    */
   public getBrowser(): LocalBrowser | RemoteBrowser {
     if (!this.browser) {
-      this.logger.info('Creating browser instance (not launched yet)');
+      this.logger.info('Creating browser instance (not launched yet)111', this.lastLaunchOptions);
       if (this.lastLaunchOptions?.wsEndpoint || this.lastLaunchOptions?.cdpEndpoint) {
         this.browser = new RemoteBrowser({
           logger: this.logger.spawn('RemoteBrowser'),
